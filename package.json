@@ -7,7 +7,12 @@
   "packageManager": "yarn@4.1.0",
   "devDependencies": {
     "@types/node": "^22.2.0",
+    "@types/react": "^18",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "ink": "^5.0.1",
+    "react": "^18.3.1"
   }
 }
