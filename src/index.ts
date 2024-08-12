@@ -1,1 +1,3 @@
-console.log("hi");
+import { startUI } from "./ui/startup.js";
+
+startUI();
