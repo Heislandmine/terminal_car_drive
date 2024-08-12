@@ -1,4 +1,13 @@
 {
   "name": "terminal_car_drive",
-  "packageManager": "yarn@4.1.0"
+  "type": "module",
+  "scripts": {
+    "start": "tsc && node ./build/index.js"
+  },
+  "packageManager": "yarn@4.1.0",
+  "devDependencies": {
+    "@types/node": "^22.2.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  }
 }
