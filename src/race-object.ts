@@ -1,16 +1,18 @@
 export type RaceObject = {
   type: string;
   text: string;
-  pos: number;
+  pos: RaceObjectPosition;
 };
 
+export type RaceObjectPosition = { line: number; index: number };
+
 export function updateRaceObjectPos(target: RaceObject): RaceObject {
-  let newPos: number;
+  let newPos: RaceObjectPosition;
 
   if (target.type === "car") {
     newPos = target.pos;
   } else {
-    newPos = target.pos + 1;
+    newPos = { ...target.pos, line: target.pos.line + 1 };
   }
 
   return {

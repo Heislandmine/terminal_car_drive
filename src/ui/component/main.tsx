@@ -6,15 +6,25 @@ import { updateRaceObjectPos } from "../../race-object.js";
 const line = {
   type: "block",
   text: "■■■■■■■■■■■■\n",
-  pos: 2,
+  pos: {
+    line: 2,
+    index: 0,
+  },
 };
 
 const car = {
   type: "car",
   text: "□\n",
-  pos: 9,
+  pos: {
+    line: 9,
+    index: 0,
+  },
 };
-const _lines = [line, { type: "block", text: "■■■■■■■■■■■■\n", pos: 4 }, car];
+const _lines = [
+  line,
+  { type: "block", text: "■■■■■■■■■■■■\n", pos: { line: 4, index: 0 } },
+  car,
+];
 const MAX_LINE_COUNT = 12; // indexは0 ~ 11
 
 export const Main = () => {
@@ -31,5 +41,13 @@ export const Main = () => {
     setLines((e) => e.map((line) => updateRaceObjectPos(line)));
   }, [timeTick]);
 
-  return <RaceView raceObjects={lines} width={14} height={MAX_LINE_COUNT} />;
+  return (
+    <Box flexDirection="column" borderStyle={"single"}>
+      <Box width={14} borderStyle={"single"}>
+        <Text>{`Time: ${timeTick}`}</Text>
+      </Box>
+
+      <RaceView raceObjects={lines} width={14} height={MAX_LINE_COUNT} />
+    </Box>
+  );
 };

@@ -15,7 +15,7 @@ export const RaceView = ({
     const renderContents: React.ReactElement[] = [];
 
     for (let i = 0; i < height; i++) {
-      const contentForLine = raceObjects.find((e) => e.pos === i);
+      const contentForLine = raceObjects.find((e) => e.pos.line === i);
       const content = contentForLine ? (
         <Text key={i}>{contentForLine.text}</Text>
       ) : (
