@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Newline, Text } from "ink";
 
 const line = {
@@ -6,10 +6,23 @@ const line = {
   pos: 2,
 };
 
-const lines = [line, { text: "■■■■■■■■■■■■\n", pos: 4 }];
+const _lines = [line, { text: "■■■■■■■■■■■■\n", pos: 4 }];
 const MAX_LINE_COUNT = 12; // indexは0 ~ 11
 
 export const Main = () => {
+  const [timeTick, setTimeTick] = useState(0);
+  const [lines, setLines] = useState(_lines);
+
+  useEffect(() => {
+    setInterval(() => {
+      setTimeTick((v) => v + 1);
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    setLines((e) => e.map((line) => ({ ...line, pos: line.pos + 1 })));
+  }, [timeTick]);
+
   const createRenderContents = () => {
     const renderContents: React.ReactElement[] = [];
 
@@ -24,12 +37,12 @@ export const Main = () => {
       renderContents.push(content);
     }
 
-    console.log(renderContents);
     return <Text>{renderContents}</Text>;
   };
+
   return (
     <Box width={14} borderStyle="single">
-      <Text>{createRenderContents()}</Text>
+      {createRenderContents()}
     </Box>
   );
 };
